@@ -7,9 +7,9 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
 } from "firebase/auth";
-import { auth } from "./firbase";
+import { auth } from "./firebase";
 
- const userAuthContext = createContext();
+const userAuthContext = createContext();
 
 export function UserAuthContextProvider( props ) {
     const [user, setUser] = useState({});
@@ -19,18 +19,18 @@ export function UserAuthContextProvider( props ) {
     }
     function signUp(email, password) {
         
-         createUserWithEmailAndPassword(auth, email, password)
-         .then((userCredential) => {
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
             // Signed up 
             const user = userCredential.user;
             // ...
-          })
-          .catch((error) => {
+        })
+        .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorCode,errorMessage)
             // ..
-          });
+        });
     }
     function logOut() {
         return signOut(auth);

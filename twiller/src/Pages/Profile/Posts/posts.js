@@ -1,12 +1,16 @@
-import React from 'react'
+import React from "react";
 import { Avatar } from "@mui/material";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import RepeatIcon from "@mui/icons-material/Repeat";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PublishIcon from "@mui/icons-material/Publish";
-const posts = ({p}) => {
+import { useTranslation } from "react-i18next";
+
+const Posts = ({ p }) => {
+  const { t } = useTranslation();
   const { name, username, photo, post, profilephoto } = p;
+
   return (
     <div className="post">
       <div className="post__avatar">
@@ -18,7 +22,7 @@ const posts = ({p}) => {
             <h3>
               {name}{" "}
               <span className="post__headerSpecial">
-                <VerifiedUserIcon className="post__badge" /> @{username}
+                <VerifiedUserIcon className="post__badge" /> {t("post.at")}{username}
               </span>
             </h3>
           </div>
@@ -31,14 +35,27 @@ const posts = ({p}) => {
           <ChatBubbleOutlineIcon
             className="post__fotter__icon"
             fontSize="small"
+            titleAccess={t("post.comment")}
           />
-          <RepeatIcon className="post__fotter__icon" fontSize="small" />
-          <FavoriteBorderIcon className="post__fotter__icon" fontSize="small" />
-          <PublishIcon className="post__fotter__icon" fontSize="small" />
+          <RepeatIcon
+            className="post__fotter__icon"
+            fontSize="small"
+            titleAccess={t("post.retweet")}
+          />
+          <FavoriteBorderIcon
+            className="post__fotter__icon"
+            fontSize="small"
+            titleAccess={t("post.like")}
+          />
+          <PublishIcon
+            className="post__fotter__icon"
+            fontSize="small"
+            titleAccess={t("post.share")}
+          />
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default posts
+export default Posts;

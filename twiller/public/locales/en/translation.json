@@ -1,0 +1,119 @@
+{
+  "happening_now": "Happening now",
+  "email_placeholder": "Email address",
+  "password_placeholder": "Password",
+  "forgot_password": "Forgot password?",
+  "log_in": "Log In",
+  "no_account": "Don't have an account?",
+  "sign_up": "Sign Up",
+  "bookmark": {
+    "title": "Welcome to Bookmark page"
+  },
+  "explore": {
+    "title": "Welcome to Explore page"
+  },
+  "feed": {
+    "home": "Home"
+  },
+  "tweetbox": {
+    "placeholder": "What's happening?",
+    "uploading": "Uploading Image",
+    "uploaded": "Image Uploaded",
+    "button": "Tweet"
+  },
+  "forgotPassword": {
+    "resetPasswordTitle": "Reset account password",
+    "enterNewPasswordSubtext": "Enter a new password for your account",
+    "emailPlaceholder": "Enter your Email",
+    "passwordPlaceholder": "Password",
+    "confirmPasswordPlaceholder": "Confirm password",
+    "resetButton": "Reset password",
+    "errorPasswordMismatch": "Password do not match the confirm password",
+    "serverError": "Server error",
+    "noServerResponse": "No response from server. Is the backend running?",
+    "requestSetupError": "Request setup error: "
+  },
+  "topBar": {
+    "passwordResetTitle": "Password Reset"
+  },
+  "lists": {
+    "welcomeTitle": "Welcome to Lists page"
+  },
+  "signup": {
+    "happeningNow": "Happening now",
+    "joinToday": "Join Twiller today",
+    "usernamePlaceholder": "@username",
+    "fullNamePlaceholder": "Enter Full Name",
+    "emailPlaceholder": "Email Address",
+    "passwordPlaceholder": "Password",
+    "signUpButton": "Sign Up",
+    "alreadyAccount": "Already have an account?",
+    "loginLink": "Log In"
+  },
+  "message": {
+    "welcomeTitle": "Welcome to Message page"
+  },
+  "more": {
+    "welcomeTitle": "Welcome to More page"
+  },
+  "notification": {
+    "welcomeTitle": "Welcome to Notification page"
+  },
+
+    "edit": "Edit",
+    "edit_date_of_birth": "Edit Date of Birth",
+    "dob_change_warning_line1": "Make sure your date of birth is accurate.",
+    "dob_change_warning_line2": "You can’t change it frequently.",
+    "cancel": "Cancel",
+    "Edit Profile": "Edit Profile",
+    "Save": "Save",
+    "Name": "Name",
+    "Bio": "Bio",
+    "Location": "Location",
+    "Website": "Website",
+    "Birth Date": "Birth Date",
+    "Add Your DOB": "Add Your DOB",
+    "Switch to Professional": "Switch to Professional",
+    
+  "mainprofile": {
+    "location": "Location",
+    "website": "Website",
+    "tweets": "Tweets"
+  },
+  "post": {
+    "comment": "Comment",
+    "retweet": "Retweet",
+    "like": "Like",
+    "share": "Share",
+    "postedBy": "Posted by",
+    "at": "@"
+  },
+
+  "sidebar": {
+    "home": "Home",
+    "explore": "Explore",
+    "notifications": "Notifications",
+    "messages": "Messages",
+    "bookmarks": "Bookmarks",
+    "lists": "Lists",
+    "profile": "Profile",
+    "more": "More",
+    "tweet": "Tweet",
+    "add_account": "Add an existing account",
+    "logout": "Log out"
+  },
+  "widgets.search": "Search Twitter",
+  "widgets.happening": "What's Happening",
+
+  "Create Avatar": "Create Avatar",
+  "Create Your Avatar": "Create Your Avatar",
+  "Generate Avatar 👾": "Generate Avatar 👾",
+  "💾 Save": "💾 Save",
+  "Cancel": "Cancel",
+  "Please a Avatar Generate First": "Please a Avatar Generate First",
+  "Your Avatar has been Saved!": "Your Avatar has been Saved!",
+  "There could be a server error": "There could be a server error",
+  "here could be a Network Error": "here could be a Network Error",
+  "svgError": "svgError",
+  "Something is Wrong": "Something is Wrong"
+}

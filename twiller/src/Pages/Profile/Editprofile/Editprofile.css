@@ -149,3 +149,37 @@
   .last-section>.last-btn:hover {
     background-color: #b4b7b9
   }
+  .createAvatarButton {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #1da1f2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.profile-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.avatar-mode-buttons button {
+  padding: 6px 10px;
+  background-color: #e6ecf0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-right: 5px;
+  transition: all 0.2s ease;
+}
+
+.avatar-mode-buttons .active-button {
+  background-color: #1da1f2; /* Twitter blue */
+  color: white;
+  border: 1px solid #1da1f2;
+}

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Box, Modal } from "@mui/material";
-import Button from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import "./Editprofile.css";
+import { useTranslation } from "react-i18next";
 
 const style = {
   position: "absolute",
@@ -27,10 +27,12 @@ function Editchild({ dob, setdob }) {
   const handleclose = () => {
     setopen(false);
   };
+  const { t } = useTranslation();
+
   return (
     <React.Fragment>
       <div className="birthdate-section" onClick={handleopen}>
-        <text>Edit</text>
+        <text>{t("edit")}</text>
       </div>
       <Modal
         hideBackdrop
@@ -41,12 +43,11 @@ function Editchild({ dob, setdob }) {
       >
         <Box sx={{ ...style, width: 300, height: 300 }}>
           <div className="text">
-            <h2>Edit date of birth</h2>
+            <h2>{t("edit_date_of_birth")}</h2>
             <p>
-              This can only be changed a few times
+              {t("dob_change_warning_line1")}
               <br />
-              Make sure you enter the age of the <br />
-              person using the account.{" "}
+              {t("dob_change_warning_line2")}
             </p>
             <input type="date" onChange={(e) => setdob(e.target.value)} />
             <button
@@ -55,7 +56,7 @@ function Editchild({ dob, setdob }) {
                 setopen(false);
               }}
             >
-              Cancel
+              {t("Cancel")}
             </button>
           </div>
         </Box>
@@ -71,6 +72,8 @@ const Editprofile = ({ user, loggedinuser }) => {
   const [website, setwebsite] = useState("");
   const [open, setopen] = useState(false);
   const [dob, setdob] = useState("");
+  const { t } = useTranslation();
+
   const handlesave = () => {
     const editinfo = {
       name,
@@ -79,7 +82,7 @@ const Editprofile = ({ user, loggedinuser }) => {
       website,
       dob,
     };
-    fetch(`https://twiller-iji5.onrender.com/userupdate/${user?.email}`, {
+    fetch(`https://twitter-4093.onrender.com/userupdate/${user?.email}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -91,6 +94,7 @@ const Editprofile = ({ user, loggedinuser }) => {
         console.log("done", data);
       });
   };
+
   return (
     <div>
       <button
@@ -99,8 +103,9 @@ const Editprofile = ({ user, loggedinuser }) => {
         }}
         className="Edit-profile-btn"
       >
-        Edit profile
+        {t("Edit Profile")}
       </button>
+
       <Modal
         open={open}
         aria-labelledby="modal-modal-title"
@@ -111,14 +116,16 @@ const Editprofile = ({ user, loggedinuser }) => {
             <IconButton onClick={() => setopen(false)}>
               <CloseIcon />
             </IconButton>
-            <h2 className="header-title">Edit Profile</h2>
-            <button className="save-btn" onClick={handlesave}>Save</button>
+            <h2 className="header-title">{t("Edit Profile")}</h2>
+            <button className="save-btn" onClick={handlesave}>
+              {t("Save")}
+            </button>
           </div>
           <form className="fill-content">
             <TextField
               className="text-field"
               fullWidth
-              label="Name"
+              label={t("Name")}
               id="fullWidth"
               variant="filled"
               onChange={(e) => setname(e.target.value)}
@@ -127,7 +134,7 @@ const Editprofile = ({ user, loggedinuser }) => {
             <TextField
               className="text-field"
               fullWidth
-              label="Bio"
+              label={t("Bio")}
               id="fullWidth"
               variant="filled"
               onChange={(e) => setbio(e.target.value)}
@@ -136,7 +143,7 @@ const Editprofile = ({ user, loggedinuser }) => {
             <TextField
               className="text-field"
               fullWidth
-              label="Location"
+              label={t("Location")}
               id="fullWidth"
               variant="filled"
               onChange={(e) => setlocation(e.target.value)}
@@ -147,7 +154,7 @@ const Editprofile = ({ user, loggedinuser }) => {
             <TextField
               className="text-field"
               fullWidth
-              label="Website"
+              label={t("Website")}
               id="fullWidth"
               variant="filled"
               onChange={(e) => setwebsite(e.target.value)}
@@ -157,7 +164,7 @@ const Editprofile = ({ user, loggedinuser }) => {
             />
           </form>
           <div className="birthdate-section">
-            <p>Birth Date</p>
+            <p>{t("Birth Date")}</p>
             <p>.</p>
             <Editchild dob={dob} setdob={setdob} />
           </div>
@@ -165,10 +172,10 @@ const Editprofile = ({ user, loggedinuser }) => {
             {loggedinuser[0]?.dob ? (
               <h2>{loggedinuser[0]?.dob}</h2>
             ) : (
-              <h2>{dob ? dob : "Add your date of birth"}</h2>
+              <h2>{dob ? dob : t("Add Your DOB")}</h2>
             )}
             <div className="last-btn">
-              <h2>Switch to Professional</h2>
+              <h2>{t("Switch to Professional")}</h2>
               <ChevronRightIcon />
             </div>
           </div>

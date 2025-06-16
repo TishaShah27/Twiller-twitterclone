@@ -1,0 +1,111 @@
+{
+  "happening_now": "正在发生",
+  "email_placeholder": "电子邮件地址",
+  "password_placeholder": "密码",
+  "forgot_password": "忘记密码？",
+  "log_in": "登录",
+  "no_account": "没有账户？",
+  "sign_up": "注册",
+  "bookmark": {
+    "title": "欢迎来到书签页面"
+  },
+  "explore": {
+    "title": "欢迎来到探索页面"
+  },
+  "feed": {
+    "home": "主页"
+  },
+  "tweetbox": {
+    "placeholder": "发生了什么？",
+    "uploading": "正在上传图片",
+    "uploaded": "图片已上传",
+    "button": "发推"
+  },
+  "forgotPassword": {
+    "resetPasswordTitle": "重置账户密码",
+    "enterNewPasswordSubtext": "为您的账户输入新密码",
+    "emailPlaceholder": "输入您的邮箱",
+    "passwordPlaceholder": "密码",
+    "confirmPasswordPlaceholder": "确认密码",
+    "resetButton": "重置密码",
+    "errorPasswordMismatch": "密码与确认密码不匹配",
+    "serverError": "服务器错误",
+    "noServerResponse": "服务器无响应。后端是否在运行？",
+    "requestSetupError": "请求设置错误："
+  },
+  "topBar": {
+    "passwordResetTitle": "密码重置"
+  },
+  "signup": {
+    "happeningNow": "正在发生",
+    "joinToday": "今天就加入 Twiller",
+    "usernamePlaceholder": "@用户名",
+    "fullNamePlaceholder": "输入全名",
+    "emailPlaceholder": "电子邮件地址",
+    "passwordPlaceholder": "密码",
+    "signUpButton": "注册",
+    "alreadyAccount": "已有账户？",
+    "Log in": "登录"
+  },
+  "lists": {
+    "welcomeTitle": "欢迎来到列表页面"
+  },
+  "message": {
+    "welcomeTitle": "欢迎来到消息页面"
+  },
+  "more": {
+    "welcomeTitle": "欢迎来到更多页面"
+  },
+  "notification": {
+    "welcomeTitle": "欢迎来到通知页面"
+  },
+
+  "edit": "编辑",
+  "edit_date_of_birth": "编辑出生日期",
+  "dob_change_warning_line1": "请确保您的出生日期准确。",
+  "dob_change_warning_line2": "您不能频繁更改它。",
+  "cancel": "取消",
+  "Edit Profile": "编辑个人资料",
+  "Save": "保存",
+  "Name": "姓名",
+  "Bio": "简介",
+  "Location": "位置",
+  "Website": "网站",
+  "Birth Date": "出生日期",
+  "Add Your DOB": "添加您的出生日期",
+  "Switch to Professional": "切换为专业帐户",
+  "Don't have an account?": "没有账户？",
+
+  "mainprofile": {
+    "location": "位置",
+    "website": "网站",
+    "tweets": "推文"
+  },
+  "sidebar": {
+    "home": "主页",
+    "explore": "探索",
+    "notifications": "通知",
+    "messages": "消息",
+    "bookmarks": "书签",
+    "lists": "列表",
+    "profile": "个人资料",
+    "more": "更多",
+    "tweet": "推文",
+    "add_account": "添加现有账户",
+    "logout": "退出登录"
+  },
+  "widgets.search": "搜索推特",
+  "widgets.happening": "正在发生的事",
+
+  "Create Avatar": "创建头像",
+  "Create Your Avatar": "创建你的头像",
+  "Generate Avatar 👾": "生成头像 👾",
+  "💾 Save": "💾 保存",
+  "Cancel": "取消",
+  "Please a Avatar Generate First": "请先生成一个头像",
+  "Your Avatar has been Saved!": "你的头像已保存！",
+  "There could be a server error": "可能是服务器错误",
+  "here could be a Network Error": "可能是网络错误",
+  "svgError": "读取头像 SVG 时出错。",
+  "Something is Wrong": "保存头像时出错。"
+}

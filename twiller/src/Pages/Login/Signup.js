@@ -1,12 +1,15 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import twitterimg from "../../image/twitter.jpeg";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../../context/UserAuthContext";
 import "./login.css";
+import { useTranslation } from "react-i18next";
 
 const Signup = () => {
+  const { t } = useTranslation();
+
   const [username, setusername] = useState("");
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
@@ -21,16 +24,10 @@ const Signup = () => {
     seterror("");
     try {
       await signUp(email, password);
-      const user = {
-        username: username,
-        name: name,
-        email: email,
-      };
-      fetch("https://twiller-iji5.onrender.com/register", {
+      const user = { username, name, email };
+      fetch("https://twitter-4093.onrender.com/register", {
         method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
+        headers: { "content-type": "application/json" },
         body: JSON.stringify(user),
       })
         .then((res) => res.json())
@@ -45,6 +42,7 @@ const Signup = () => {
       window.alert(error.message);
     }
   };
+
   const hanglegooglesignin = async (e) => {
     e.preventDefault();
     try {
@@ -54,6 +52,7 @@ const Signup = () => {
       console.log(error.message);
     }
   };
+
   return (
     <>
       <div className="login-container">
@@ -62,54 +61,53 @@ const Signup = () => {
         </div>
 
         <div className="form-container">
-          <div className="">
+          <div>
             <TwitterIcon className="Twittericon" style={{ color: "skyblue" }} />
-            <h2 className="heading">Happening now</h2>
-            <div class="d-flex align-items-sm-center">
-              <h3 className="heading1"> Join twiller today</h3>
+            <h2 className="heading">{t("signup.happeningNow")}</h2>
+            <div className="d-flex align-items-sm-center">
+              <h3 className="heading1">{t("signup.joinToday")}</h3>
             </div>
             {error && <p className="errorMessage">{error}</p>}
+
             <form onSubmit={handlesubmit}>
               <input
                 className="display-name"
                 type="username"
-                placeholder="@username"
+                placeholder={t("signup.usernamePlaceholder")}
                 onChange={(e) => setusername(e.target.value)}
               />
               <input
                 className="display-name"
                 type="name"
-                placeholder="Enter Full Name"
+                placeholder={t("signup.fullNamePlaceholder")}
                 onChange={(e) => setname(e.target.value)}
               />
               <input
                 className="email"
                 type="email"
-                placeholder="Email Address"
+                placeholder={t("signup.emailPlaceholder")}
                 onChange={(e) => setemail(e.target.value)}
               />
               <input
                 className="password"
                 type="password"
-                placeholder="Password"
+                placeholder={t("signup.passwordPlaceholder")}
                 onChange={(e) => setpassword(e.target.value)}
               />
               <div className="btn-login">
                 <button type="submit" className="btn">
-                  Sign Up
+                  {t("signup.signUpButton")}
                 </button>
               </div>
             </form>
+
             <hr />
             <div className="google-button">
-              <GoogleButton
-                className="g-btn"
-                type="light"
-                onClick={hanglegooglesignin}
-              />
+              <GoogleButton className="g-btn" type="light" onClick={hanglegooglesignin} />
             </div>
+
             <div>
-              Already have an account?
+              {t("signup.alreadyAccount")}{" "}
               <Link
                 to="/login"
                 style={{
@@ -119,7 +117,7 @@ const Signup = () => {
                   marginLeft: "5px",
                 }}
               >
-                Log In
+                {t("signup.loginLink")}
               </Link>
             </div>
           </div>

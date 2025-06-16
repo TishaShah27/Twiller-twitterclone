@@ -1,27 +1,33 @@
-.page {
-    flex: 0.4;
-    border-right: 1px solid var(--twitter-background);
-    width: 100vw;
-    padding: 0 180px;
-    height: 100vh;
-    display: flex;
-    align-items: center;
+ .page {
+  flex: 0.4;
+  border-right: 1px solid var(--twitter-background);
+  width: 100vw;
+  padding: 0 180px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .profilePage {
-    flex: 0.4;
-    border-right: 1px solid var(--twitter-background);
-    min-width: fit-content;
-    overflow-y: scroll;
+  flex: 0.4;
+  border-right: 1px solid var(--twitter-background);
+  min-width: fit-content;
+  overflow-y: scroll;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
 .profilePage::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
+
 
 
 .pageTitle {
-    color: var(--twitter-color);
-    text-align: center;
-    font-size: 30px;
+  color: var(--twitter-color);
+  text-align: center;
+  font-size: 30px;
+  margin-top: 20px;
 }
+

@@ -2,14 +2,13 @@
     flex: 0.3;
     min-width: fit-content;
     overflow-y: scroll;
-  }
-  
-  
-  .widgets::-webkit-scrollbar {
+}
+
+.widgets::-webkit-scrollbar {
     display: none;
-  }
-  
-  .widgets__input {
+}
+
+.widgets__input {
     display: flex;
     align-items: center;
     background-color: var(--twitter-background);
@@ -17,33 +16,57 @@
     border-radius: 50px;
     margin-top: 10px;
     margin-left: 20px;
-  }
-  
-  .widgets__input>input {
+}
+
+.widgets__input > input {
     border: none;
     margin-top: 0px;
     background-color: var(--twitter-background);
-  }
-  
-  .widgets__searchIcon {
+}
+
+.widgets__searchIcon {
     color: gray;
-  }
-  
-  .widgets__widgetContainer {
+}
+
+.widgets__widgetContainer {
     margin-top: 15px;
     margin-left: 20px;
     padding: 20px;
     background-color: #f5f8fa;
     border-radius: 20px;
-  }
-  
-  .widgets__widgetContainer>h2 {
+}
+
+.widgets__widgetContainer > h2 {
     font-size: 18px;
     font-weight: 800;
+}
+
+
+@media screen and (max-width: 768px) {
+  .widgets {
+    flex: 1;
+    min-width: auto;
+    max-height: 200px; 
+    margin: 10px; 
+    overflow-y: auto;
+    display: block; 
   }
-  
-  @media screen and (max-width:688px) {
-    .widgets {
-      display: none;
-    }
+  .widgets__input {
+    margin-left: 10px;
+    padding: 8px 12px;
   }
+  .widgets__widgetContainer {
+    margin-left: 10px;
+    padding: 15px;
+  }
+  .widgets__widgetContainer > h2 {
+    font-size: 16px;
+  }
+}
+
+
+@media screen and (max-width: 688px) {
+  .widgets {
+    display: none;
+  }
+}

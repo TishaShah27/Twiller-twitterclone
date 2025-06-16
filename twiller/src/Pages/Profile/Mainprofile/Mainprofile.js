@@ -10,25 +10,44 @@ import AddLinkIcon from "@mui/icons-material/AddLink";
 import Editprofile from "../Editprofile/Editprofile";
 import axios from "axios";
 import useLoggedinuser from "../../../hooks/useLoggedinuser";
+import AvatarCustomization from "../Avatar/avatar"; // Adjust path as needed
+import Switch from "@mui/material/Switch";
+import { useTranslation } from "react-i18next";
+
 const Mainprofile = ({ user }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [isloading, setisloading] = useState(false);
   const [loggedinuser] = useLoggedinuser();
   const username = user?.email?.split("@")[0];
   const [post, setpost] = useState([]);
+  const [useAvatar, setUseAvatar] = useState(false);
+  const [avatarSvg, setAvatarSvg] = useState(null);
+  const [avatarModalOpen, setAvatarModalOpen] = useState(false);
+  const handleOpenAvatarModal = () => setAvatarModalOpen(true);
 
   useEffect(() => {
-    fetch(`https://twiller-iji5.onrender.com/userpost?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setpost(data);
-      });
-  }, [user.email]);
+    if (user?.email) {
+      fetch(`http://localhost:5000/userpost?email=${user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setpost(data);
+        });
+    }
+  }, [user?.email]);
+
+  // avatar
+  useEffect(() => {
+    if (loggedinuser[0]) {
+      const u = loggedinuser[0];
+      if (u.avatar) setAvatarSvg(u.avatar);
+      if (u.useAvatar !== undefined) setUseAvatar(u.useAvatar);
+    }
+  }, [loggedinuser]);
 
   const handleuploadcoverimage = (e) => {
     setisloading(true);
     const image = e.target.files[0];
-    // console.log(image)
     const formData = new FormData();
     formData.set("image", image);
     axios
@@ -38,14 +57,13 @@ const Mainprofile = ({ user }) => {
       )
       .then((res) => {
         const url = res.data.data.display_url;
-        // console.log(res.data.data.display_url);
         const usercoverimage = {
           email: user?.email,
           coverimage: url,
         };
         setisloading(false);
         if (url) {
-          fetch(`https://twiller-iji5.onrender.com/userupdate/${user?.email}`, {
+          fetch(`https://twitter-4093.onrender.com/userupdate/${user?.email}`, {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
@@ -64,10 +82,10 @@ const Mainprofile = ({ user }) => {
         setisloading(false);
       });
   };
+
   const handleuploadprofileimage = (e) => {
     setisloading(true);
     const image = e.target.files[0];
-    // console.log(image)
     const formData = new FormData();
     formData.set("image", image);
     axios
@@ -77,14 +95,13 @@ const Mainprofile = ({ user }) => {
       )
       .then((res) => {
         const url = res.data.data.display_url;
-        // console.log(res.data.data.display_url);
         const userprofileimage = {
           email: user?.email,
           profileImage: url,
         };
         setisloading(false);
         if (url) {
-          fetch(`https://twiller-iji5.onrender.com/userupdate/${user?.email}`, {
+          fetch(`https://twitter-4093.onrender.com/userupdate/${user?.email}`, {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
@@ -103,32 +120,7 @@ const Mainprofile = ({ user }) => {
         setisloading(false);
       });
   };
-  // const data = [
-  //   {
-  //     _id: "1",
-  //     name: "Jane Doe",
-  //     username: "jane_doe",
-  //     profilePhoto: "https://example.com/profiles/jane.jpg",
-  //     post: "Exploring the new features in JavaScript! 🚀 #coding #JavaScript",
-  //     photo: "https://example.com/posts/javascript.png",
-  //   },
-  //   {
-  //     _id: "2",
-  //     name: "John Smith",
-  //     username: "johnsmith",
-  //     profilePhoto: "https://example.com/profiles/john.jpg",
-  //     post: "Just finished a great workout session! 💪 #fitness #health",
-  //     photo: "https://example.com/posts/workout.png",
-  //   },
-  //   {
-  //     _id: "3",
-  //     name: "Alice Johnson",
-  //     username: "alicejohnson",
-  //     profilePhoto: "https://example.com/profiles/alice.jpg",
-  //     post: "Loving the new features in CSS! #webdevelopment #design",
-  //     photo: "https://example.com/posts/css.png",
-  //   },
-  // ];
+
   return (
     <div>
       <ArrowBackIcon className="arrow-icon" onClick={() => navigate("/")} />
@@ -147,6 +139,7 @@ const Mainprofile = ({ user }) => {
                   alt=""
                   className="coverImage"
                 />
+
                 <div className="hoverCoverImage">
                   <div className="imageIcon_tweetButton">
                     <label htmlFor="image" className="imageIcon">
@@ -165,13 +158,17 @@ const Mainprofile = ({ user }) => {
                   </div>
                 </div>
               </div>
+
+              {/* avatar */}
               <div className="avatar-img">
                 <div className="avatarContainer">
                   <img
                     src={
-                      loggedinuser[0]?.profileImage
+                      useAvatar && avatarSvg
+                        ? avatarSvg
+                        : loggedinuser[0]?.profileImage
                         ? loggedinuser[0].profileImage
-                        : user && user.photoURL
+                        : user?.photoURL
                     }
                     alt=""
                     className="avatar"
@@ -194,6 +191,50 @@ const Mainprofile = ({ user }) => {
                     </div>
                   </div>
                 </div>
+                <Switch
+                  checked={useAvatar}
+                  onChange={() => {
+                    const updatedValue = !useAvatar;
+                    setUseAvatar(updatedValue);
+
+                    axios
+                      .post("http://localhost:5000/save-avatar", {
+                        email: loggedinuser[0]?.email,
+                        avatar: avatarSvg,
+                        useAvatar: updatedValue,
+                      })
+                      .then(() => {
+                        console.log("Avatar saved successfully");
+
+                        // Refetch updated user
+                        return axios.get(
+                          `http://localhost:5000/loggedinuser?email=${loggedinuser[0]?.email}`
+                        );
+                      })
+                      .then((response) => {
+                        loggedinuser([response.data]); // assuming you're using useState
+                      })
+                      .catch((err) => {
+                        console.error("Error saving avatar:", err);
+                      });
+                  }}
+                  color="primary"
+                />
+
+                <span className="toggle-label">Use Avatar</span>
+                {avatarModalOpen && (
+                  <AvatarCustomization
+                    onSave={(svg) => {
+                      const dataUri = `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+                      setAvatarSvg(dataUri);
+                      setAvatarModalOpen(false);
+                      setUseAvatar(true);
+                    }}
+                    onClose={() => setAvatarModalOpen(false)}
+                    userEmail={loggedinuser[0]?.email}
+                  />
+                )}
+
                 <div className="userInfo">
                   <div>
                     <h3 className="heading-3">
@@ -203,32 +244,49 @@ const Mainprofile = ({ user }) => {
                     </h3>
                     <p className="usernameSection">@{username}</p>
                   </div>
-                  <Editprofile user={user} loggedinuser={loggedinuser} />
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                    }}
+                  >
+                    <Editprofile user={user} loggedinuser={loggedinuser} />
+                    <button
+                      className="create-avatar-btn"
+                      onClick={handleOpenAvatarModal}
+                    >
+                      {t("Create Avatar")}
+                    </button>
+                  </div>
                 </div>
+
                 <div className="infoContainer">
                   {loggedinuser[0]?.bio ? <p>{loggedinuser[0].bio}</p> : ""}
                   <div className="locationAndLink">
                     {loggedinuser[0]?.location ? (
                       <p className="suvInfo">
-                        <MyLocationIcon /> {loggedinuser[0].location}
+                        <MyLocationIcon /> {t("Location")}:{" "}
+                        {loggedinuser[0].location}
                       </p>
                     ) : (
                       ""
                     )}
                     {loggedinuser[0]?.website ? (
                       <p className="subInfo link">
-                        <AddLinkIcon /> {loggedinuser[0].website}
+                        <AddLinkIcon /> {t("Website")}:{" "}
+                        {loggedinuser[0].website}
                       </p>
                     ) : (
                       ""
                     )}
                   </div>
                 </div>
-                <h4 className="tweetsText">Tweets</h4>
+                <h4 className="tweetsText">{t("Tweets")}</h4>
                 <hr />
               </div>
               {post.map((p) => (
-                <Post p={p} />
+                <Post key={p._id || p.id} p={p} />
               ))}
             </div>
           }

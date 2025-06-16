@@ -47,6 +47,17 @@
   .photoIconDisabled {
     cursor: not-allowed;
   }
+  /* .Switch{
+    display: flex;
+  justify-content: center;
+  align-items: center; 
+
+  } */
+  /* .toggle-label{
+    display: flex;
+  justify-content: center;
+  align-items: center; 
+  } */
 
   .userInfo {
     margin-top: 10px;
@@ -118,7 +129,8 @@
   }
 
   .Edit-profile-btn {
-    background-color: white;
+    background-color: rgb(0, 0, 0);
+    color: white;
     padding: 10px;
     border: 1px solid;
     border-radius: 2rem;
@@ -126,8 +138,24 @@
   }
 
   .Edit-profile-btn:hover {
-    background-color: rgb(207, 206, 206);
+    background-color: rgb(73, 74, 74);
   }
+
+  .create-avatar-btn {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 2rem;
+    margin-right: 20px;
+  }
+
+  .create-avatar-btn:hover {
+    background-color: rgb(73, 74, 74);
+  }
+
+
+
 
   .Tweet {
     background-color: white;
@@ -165,3 +193,9 @@
     color: var(--twitter-color);
     cursor: pointer;
   }
+  .avatarDisplayCircle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+}
