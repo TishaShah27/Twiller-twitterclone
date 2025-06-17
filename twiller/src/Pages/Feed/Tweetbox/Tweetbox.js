@@ -43,7 +43,7 @@ const Tweetbox = () => {
   const handletweet = (e) => {
     e.preventDefault();
     if (user?.providerData[0]?.providerId === "password") {
-      fetch(`https://twitter-4093.onrender.com/loggedinuser?email=${email}`)
+      fetch(`https://twiller-twitterclone-ku86.onrender.com/loggedinuser?email=${email}`)
         .then((res) => res.json())
         .then((data) => {
           setname(data[0]?.name);
@@ -65,7 +65,7 @@ const Tweetbox = () => {
       };
       setpost("");
       setimageurl("");
-      fetch("https://twitter-4093.onrender.com/post", {
+      fetch("https://twiller-twitterclone-ku86.onrender.com/post", {
         method: "POST",
         headers: {
           "content-type": "application/json",

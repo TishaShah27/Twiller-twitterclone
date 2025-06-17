@@ -24,7 +24,7 @@ const ForgotPassword = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/forgot-password", {
+      const res = await axios.post("https://twiller-twitterclone-ku86.onrender.com/forgot-password", {
         emailOrPhone: input,
         password: password,
       });

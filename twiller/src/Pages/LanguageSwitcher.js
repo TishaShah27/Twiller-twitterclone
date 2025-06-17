@@ -40,7 +40,7 @@ export default function LanguageSwitcher() {
       // Check if user phone exists
       try {
         const res = await fetch(
-          `https://twitter-4093.onrender.com/loggedinuser?email=${userEmail}`
+          `https://twiller-twitterclone-ku86.onrender.com/loggedinuser?email=${userEmail}`
         );
         const data = await res.json();
         if (data.phone) {
@@ -84,7 +84,7 @@ export default function LanguageSwitcher() {
     setLoading(true);
     setMessage("Sending OTP to email...");
     try {
-      const res = await fetch("http://localhost:5000/send-otp-email", {
+      const res = await fetch("https://twiller-twitterclone-ku86.onrender.com/send-otp-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: contact }),
@@ -131,7 +131,7 @@ export default function LanguageSwitcher() {
       if (!phoneExists) {
         // Add phone before sending OTP
         try {
-          const res = await fetch("http://localhost:5000/update-phone", {
+          const res = await fetch("https://twiller-twitterclone-ku86.onrender.com/update-phone", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ phone: contact }),
@@ -154,7 +154,7 @@ export default function LanguageSwitcher() {
       setLoading(true);
       setMessage("Verifying OTP...");
       try {
-        const res = await fetch("http://localhost:5000/verify-otp-email", {
+        const res = await fetch("https://twiller-twitterclone-ku86.onrender.com/verify-otp-email", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: contact, otp }),

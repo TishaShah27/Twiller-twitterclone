@@ -28,7 +28,7 @@ const Mainprofile = ({ user }) => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/userpost?email=${user.email}`)
+      fetch(`hhttps://twiller-twitterclone-ku86.onrender.com/userpost?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setpost(data);
@@ -63,7 +63,7 @@ const Mainprofile = ({ user }) => {
         };
         setisloading(false);
         if (url) {
-          fetch(`https://twitter-4093.onrender.com/userupdate/${user?.email}`, {
+          fetch(`https://twiller-twitterclone-ku86.onrender.com/userupdate/${user?.email}`, {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
@@ -101,7 +101,7 @@ const Mainprofile = ({ user }) => {
         };
         setisloading(false);
         if (url) {
-          fetch(`https://twitter-4093.onrender.com/userupdate/${user?.email}`, {
+          fetch(`https://twiller-twitterclone-ku86.onrender.com/userupdate/${user?.email}`, {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
@@ -198,7 +198,7 @@ const Mainprofile = ({ user }) => {
                     setUseAvatar(updatedValue);
 
                     axios
-                      .post("http://localhost:5000/save-avatar", {
+                      .post("https://twiller-twitterclone-ku86.onrender.com/save-avatar", {
                         email: loggedinuser[0]?.email,
                         avatar: avatarSvg,
                         useAvatar: updatedValue,
@@ -208,7 +208,7 @@ const Mainprofile = ({ user }) => {
 
                         // Refetch updated user
                         return axios.get(
-                          `http://localhost:5000/loggedinuser?email=${loggedinuser[0]?.email}`
+                          `https://twiller-twitterclone-ku86.onrender.com/loggedinuser?email=${loggedinuser[0]?.email}`
                         );
                       })
                       .then((response) => {

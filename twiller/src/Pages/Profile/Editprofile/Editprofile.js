@@ -82,7 +82,7 @@ const Editprofile = ({ user, loggedinuser }) => {
       website,
       dob,
     };
-    fetch(`https://twitter-4093.onrender.com/userupdate/${user?.email}`, {
+    fetch(`https://twiller-twitterclone-ku86.onrender.com/userupdate/${user?.email}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

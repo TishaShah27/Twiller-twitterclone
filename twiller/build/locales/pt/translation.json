@@ -1,0 +1,114 @@
+{
+  "happening_now": "Acontecendo agora",
+  "email_placeholder": "Endereço de e-mail",
+  "password_placeholder": "Senha",
+  "forgot_password": "Esqueceu a senha?",
+  
+  "no_account": "Não tem uma conta?",
+  "Sign up": "Inscreva-se",
+  "bookmark": {
+    "title": "Bem-vindo à página de favoritos"
+  },
+  "explore": {
+    "title": "Bem-vindo à página de exploração"
+  },
+  "feed": {
+    "home": "Início"
+  },
+  "tweetbox": {
+    "placeholder": "O que está acontecendo?",
+    "uploading": "Carregando imagem",
+    "uploaded": "Imagem carregada",
+    "button": "Tweetar"
+  },
+  "forgotPassword": {
+    "resetPasswordTitle": "Redefinir senha da conta",
+    "enterNewPasswordSubtext": "Digite uma nova senha para sua conta",
+    "emailPlaceholder": "Digite seu e-mail",
+    "passwordPlaceholder": "Senha",
+    "confirmPasswordPlaceholder": "Confirmar senha",
+    "resetButton": "Redefinir senha",
+    "errorPasswordMismatch": "A senha não corresponde à confirmação",
+    "serverError": "Erro no servidor",
+    "noServerResponse": "Sem resposta do servidor. O backend está em execução?",
+    "requestSetupError": "Erro na configuração da solicitação: "
+  },
+  "topBar": {
+    "passwordResetTitle": "Redefinir senha"
+  },
+  "signup": {
+    "happeningNow": "Acontecendo agora",
+    "joinToday": "Junte-se ao Twiller hoje",
+    "usernamePlaceholder": "@nomeusuario",
+    "fullNamePlaceholder": "Digite o nome completo",
+    "emailPlaceholder": "Endereço de email",
+    "passwordPlaceholder": "Senha",
+    "signUpButton": "Inscrever-se",
+    "alreadyAccount": "Já tem uma conta?",
+    "loginLink": "Entrar"
+    
+  },
+  "lists": {
+    "welcomeTitle": "Bem-vindo à página de listas"
+  },
+  "message": {
+    "welcomeTitle": "Bem-vindo à página de mensagens"
+  },
+  "more": {
+    "welcomeTitle": "Bem-vindo à página Mais"
+  },
+  "notification": {
+    "welcomeTitle": "Bem-vindo à página de Notificações"
+  },
+
+    "edit": "Editar",
+    "edit_date_of_birth": "Editar data de nascimento",
+    "dob_change_warning_line1": "Certifique-se de que sua data de nascimento está correta.",
+    "dob_change_warning_line2": "Você não pode alterá-la com frequência.",
+    "cancel": "Cancelar",
+    "Edit Profile": "Editar perfil",
+    "Save": "Salvar",
+    "Name": "Nome",
+    "Bio": "Biografia",
+    "Location": "Localização",
+    "Website": "Site",
+    "Birth Date": "Data de nascimento",
+    "Add Your DOB": "Adicione sua data de nascimento",
+    "Switch to Professional": "Mudar para profissional",
+    "Don't have an account?": "Não tem uma conta?",
+    "Log in": "Entrar",
+    
+  "mainprofile": {
+    "location": "Localização",
+    "website": "Site",
+    "tweets": "Tweets"
+  },
+  "sidebar": {
+    "home": "Início",
+    "explore": "Explorar",
+    "notifications": "Notificações",
+    "messages": "Mensagens",
+    "bookmarks": "Favoritos",
+    "lists": "Listas",
+    "profile": "Perfil",
+    "more": "Mais",
+    "tweet": "Tweetar",
+    "add_account": "Adicionar conta existente",
+    "logout": "Sair"
+  },
+
+  "widgets.search": "Pesquisar no Twitter",
+  "widgets.happening": "O que está acontecendo",
+
+  "Create Avatar": "Criar Avatar",
+  "Create Your Avatar": "Crie seu Avatar",
+  "Generate Avatar 👾": "Gerar Avatar 👾",
+  "💾 Save": "💾 Salvar",
+  "Cancel": "Cancelar",
+  "Please a Avatar Generate First": "Por favor, gere um Avatar primeiro",
+  "Your Avatar has been Saved!": "Seu Avatar foi salvo!",
+  "There could be a server error": "Pode haver um erro no servidor",
+  "here could be a Network Error": "Pode haver um erro de rede",
+  "svgError": "Erro ao ler o SVG do avatar.",
+  "Something is Wrong": "Algo deu errado ao salvar o avatar."
+}

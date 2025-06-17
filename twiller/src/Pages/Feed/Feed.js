@@ -9,7 +9,7 @@ const Feed = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    fetch("https://twitter-4093.onrender.com")
+    fetch("https://twiller-twitterclone-ku86.onrender.com")
       .then((res) => res.json())
       .then((data) => {
         setpost(data);

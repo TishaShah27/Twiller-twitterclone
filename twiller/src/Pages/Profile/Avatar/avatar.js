@@ -47,7 +47,7 @@ const avatarWithBg = avatar.slice(0, insertIndex) + backgroundCircle + avatar.sl
       reader.onloadend = async () => {
         const base64Avatar = reader.result;
         try {
-          const response = await axios.post('http://localhost:5000/save-avatar', {
+          const response = await axios.post('https://twiller-twitterclone-ku86.onrender.com/save-avatar', {
             email: userEmail,
             avatar: base64Avatar,
             useAvatar: true,

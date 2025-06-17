@@ -7,7 +7,7 @@ const useLoggedinuser = () => {
 
 useEffect(() => {
   if (!email) return;
-  fetch(`https://twitter-4093.onrender.com/loggedinuser?email=${email}`)
+  fetch(`https://twiller-twitterclone-ku86.onrender.com/loggedinuser?email=${email}`)
     .then((res) => res.json())
     .then((data) => {
       setloggedinuser(data);
