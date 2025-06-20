@@ -35,36 +35,90 @@ async function run() {
     const usercollection = client.db("database").collection("users");
     const otpStore = new Map();
 
+    app.post("/login", async (req, res) => {
+      const { email, password } = req.body;
+
+      if (!email || !password) {
+        return res
+          .status(400)
+          .send({ error: "Email and password are required" });
+      }
+
+      try { 
+        const user = await usercollection.findOne({ email });
+
+        if (!user) {
+          return res.status(404).send({ error: "User not found" });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+          return res.status(401).send({ error: "Invalid password" });
+        }
+
+        res.send({ message: "Login successful",
+          user: {
+    email: user.email,
+    name: user.name,
+    username: user.username,
+    phone: user.phone,
+  },
+        });
+      } catch (error) {
+        console.error("Login error:", error);
+        res.status(500).send({ error: "Internal server error" });
+      }
+    });
+
     // Your route handlers go here (copy from your existing code)
-    app.post("/register", async (req, res) => {
-  const { username, name, email, phone } = req.body;
+        app.post("/register", async (req, res) => {
+      const { username, name, email, phone, password } = req.body;
 
-  if (!email || !username || !name) {
-    return res.status(400).send({ error: "Required fields are missing" });
-  }
+      // Basic validation
+      if (!email || !username || !name || !password) {
+        return res.status(400).send({ error: "Required fields are missing" });
+      }
 
-  try {
-    // Check for existing email
-    const existingEmail = await usercollection.findOne({ email });
-    if (existingEmail) {
-      return res.status(409).send({ error: "Email already exists" });
-    }
+      try {
+        // Check if email already exists
+        const existingEmail = await usercollection.findOne({ email });
+        if (existingEmail) {
+          return res.status(409).send({ error: "Email already exists" });
+        }
 
-    // Check for existing username (optional, but recommended)
-    const existingUsername = await usercollection.findOne({ username });
-    if (existingUsername) {
-      return res.status(409).send({ error: "Username already exists" });
-    }
+        // Check if username already exists
+        const existingUsername = await usercollection.findOne({ username });
+        if (existingUsername) {
+          return res.status(409).send({ error: "Username already exists" });
+        }
 
-    // Insert new user
-    const result = await usercollection.insertOne({ username, name, email, phone });
-    res.status(201).send(result);
-  } catch (error) {
-    console.error("Registration error:", error);
-    res.status(500).send({ error: "Internal server error" });
-  }
+        // Hash the password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Save new user
+        const result = await usercollection.insertOne({
+          username,
+          name,
+          email,
+          phone,
+          password: hashedPassword,
+        });
+
+        res.status(201).send({
+  message: "User registered successfully",
+  user: {
+    username,
+    name,
+    email,
+    phone,
+  },
 });
-
+      } catch (error) {
+        console.error("Registration error:", error);
+        res.status(500).send({ error: "Internal server error" });
+      }
+    });
+    
 const RECAPTCHA_SECRET = "your-secret-key"; // from reCAPTCHA dashboard
 
 router.post("/verify-recaptcha", async (req, res) => {
@@ -122,7 +176,7 @@ module.exports = router;
     });
 
     app.patch("/userupdate/:email", async (req, res) => {
-      const filter = req.params;
+      const filter = { email: req.query.email };
       const profile = req.body;
       const options = { upsert: true };
       const updateDoc = { $set: profile };
